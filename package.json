@@ -4,5 +4,16 @@
     "babel-jest": "^22.4.4",
     "jest": "^22.4.4",
     "parcel-bundler": "^1.8.1"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "superagent": "^3.8.3",
+    "surge": "^0.20.1"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build --no-source-maps index.html",
+    "deploy": "npm run build && surge --domain katie-w5d1.surge.sh dist/",
+    "test": "jest"
   }
 }
