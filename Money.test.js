@@ -1,34 +1,34 @@
 /* globals test, expect */
+import {Money, Bank} from './Money'
 
-import Money from './Money'
 
-test('can add $1 to $2', () => {
-  const oneDollar = new Money(1, 'USD')
-  const twoDollar = new Money(2, 'USD')
-  const sum = oneDollar.plus(twoDollar)
-  expect(sum).toEqual(new Money(3, 'USD'))
-})
+// test('can add $1 to $2', () => {
+//   const oneDollar = new Money(1, 'USD')
+//   const twoDollar = new Money(2, 'USD')
+//   const sum = oneDollar.plus(twoDollar)
+//   expect(sum).toEqual(new Money(3, 'USD'))
+// })
 
-test('can add $3 to $2', () => {
-  const threeDollar = new Money(3, 'USD')
-  const twoDollar = new Money(2, 'USD')
-  const sum = threeDollar.plus(twoDollar)
-  expect(sum).toEqual(new Money(5, 'USD'))
-})
+// test('can add $3 to $2', () => {
+//   const threeDollar = new Money(3, 'USD')
+//   const twoDollar = new Money(2, 'USD')
+//   const sum = threeDollar.plus(twoDollar)
+//   expect(sum).toEqual(new Money(5, 'USD'))
+// })
 
-test('can subtract $2 from $3', () => {
-  const threeDollar = new Money(3, 'USD')
-  const twoDollar = new Money(2, 'USD')
-  const difference = threeDollar.minus(twoDollar)
-  expect(difference).toEqual(new Money(1, 'USD'))
-})
+// test('can subtract $2 from $3', () => {
+//   const threeDollar = new Money(3, 'USD')
+//   const twoDollar = new Money(2, 'USD')
+//   const difference = threeDollar.minus(twoDollar)
+//   expect(difference).toEqual(new Money(1, 'USD'))
+// })
 
-test('can add 3 EUR to 2 EUR', () => {
-  const threeEuro = new Money(3, 'EUR')
-  const twoEuro = new Money(2, 'EUR')
-  const sum = threeEuro.plus(twoEuro)
-  expect(sum).toEqual(new Money(5, 'EUR'))
-})
+// test('can add 3 EUR to 2 EUR', () => {
+//   const threeEuro = new Money(3, 'EUR')
+//   const twoEuro = new Money(2, 'EUR')
+//   const sum = threeEuro.plus(twoEuro)
+//   expect(sum).toEqual(new Money(5, 'EUR'))
+// })
 
 test('adding EUR to USD should raise an error', () => {
   const oneDollar = new Money(1, 'USD')
@@ -54,12 +54,30 @@ test('Money cannot be more precise than 3 decimal places', () => {
   }).toThrowError()
 })
 
-test('Money can be multiplied', () => {
-  // expect((new Money(0.2, 'USD').times(3))).toEqual(new Money(0.6, 'USD'))
-  expect((new Money(2, 'USD').times(3))).toEqual(new Money(6, 'USD'))
+// test('Money can be multiplied', () => {
+//   // expect((new Money(0.2, 'USD').times(3))).toEqual(new Money(0.6, 'USD'))
+//   expect((new Money(2, 'USD').times(3))).toEqual(new Money(6, 'USD'))
+// })
+
+// test('Money should not have floating point errors', () => {
+//   const money1 = new Money(0.2, 'USD')
+//   expect(money1.times(3)).toEqual(new Money(0.6, 'USD'))
+// })
+
+
+//Given a Money object and the same currency code as that money, it should return the same amount of money.
+
+test('two $1 are equal', () => {
+  var money = new Money(1,'USD')
+  var bank = new Bank([])
+  expect(bank.exchange(money, 'USD')).toEqual(new Money(1, 'USD'))
 })
 
-test('Money should not have floating point errors', () => {
-  const money1 = new Money(0.2, 'USD')
-  expect(money1.times(3)).toEqual(new Money(0.6, 'USD'))
+//Given a Money object and the currency code of USD, it should return the correct amount of money in USD.
+
+test('return correct amount', () => {
+  var money = new Money(1,'USD')
+  var bank = new Bank([])
+  expect(bank.exchange(money, 'USD')).toEqual(new Money(1, 'USD'))
+
 })
